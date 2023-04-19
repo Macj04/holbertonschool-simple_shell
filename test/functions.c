@@ -49,12 +49,13 @@ char *verify_path(char *line_buf, char **array_path)
 
 	strtok(strdup(getenv("PATH=")), ":=");
 
+	printf("Entro");
 	for (m = 0; array_path[m]; m++)
 	{
-		vdir =  malloc(strlen(line_buf) + strlen(array_path) + 2);
+		vdir =  malloc(strlen(line_buf) + strlen(array_path[m]) + 2);
 		if (vdir == NULL)
 			return (NULL);
-		sprintf(vdir, "%s/%s", array_path, line_buf);
+		sprintf(vdir, "%s/%s", array_path[m], line_buf);
 		if (stat(vdir, &sta) == 0)
 			return (vdir);
 		free(vdir);

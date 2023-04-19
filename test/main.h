@@ -17,5 +17,6 @@ int check_space(char *line_buf);
 void get_token(char *line_buf, char **array, char *delimit);
 char *verify_path(char *line_buf, char **array_path);
 int subprocess(char **argv, char *path);
+void free_array_dir(char **array_dir);
 
 #endif
