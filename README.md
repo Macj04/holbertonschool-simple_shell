@@ -73,11 +73,13 @@ Through the following project we have created our own interpreter of commands Li
 ## Compilation
 > Your shell will be compiled this way:
 ***
+
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ***
 ## Syntax of Shell
 ***
+
 #cisfun$ [command] -[parameters]
 
 ***
@@ -86,6 +88,5 @@ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 
 ***
 ## Authors
-[Lautaro Rodriguez](https://github.com/LautareteX)
-[Miguel Coa](https://github.com/Macj04)
+[Lautaro Rodriguez](https://github.com/LautareteX), [Miguel Coa](https://github.com/Macj04)
 
