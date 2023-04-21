@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * chek_space - Checks for a space in the argument
+ * check_space - Checks for a space in the argument
  * @line_buf: command typed
  * Return: 0 failure, 1 on succes
  */
@@ -14,7 +14,7 @@ int check_space(char *line_buf)
 			return (1);
 	}
 	return (0);
- }
+}
 
 /**
  * get_token - Function that generate an array
@@ -38,7 +38,7 @@ void get_token(char *line_buf, char **array, char *delimit)
 /**
  * verify_path - Verify the current path
  * @line_buf: Buffer
- * @array_path: Pointer to a pointer to a string 
+ * @array_path: Pointer to a pointer to a string
  * Return: Direction exist or no
  */
 char *verify_path(char *line_buf, char **array_path)
