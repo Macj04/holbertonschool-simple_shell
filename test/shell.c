@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	char *line_buf = NULL, *path_com = NULL;
+	char *line_buf = NULL;
 	char *array[1024], *array_dir[1024];
 	size_t s = 0;
 	ssize_t nchars = 0;
@@ -52,17 +52,22 @@ int main(void)
 			}
 			else
 			{
-				path_com = verify_path(array[0], array_dir);
-				if (path_com)
+				if (!verify_dir(array[0]))
 				{
-					aux_subprocess(array, path_com);
-					free(path_com);
-					free_array_dir(array_dir);
+					char *full_path = find_command(array[0]);
+					if (full_path != NULL)
+					{
+						aux_subprocess(array, full_path);
+						free(full_path);
+						free_array_dir(array_dir);
+					}
+					else
+					{
+						printf("%s: Command not found\n", array[0]);
+					}
 				}
-				else
-					printf("%s: Command not found\n", array[0]);
-			}
 		}
 	}
 	return (0);
+	}
 }
