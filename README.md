@@ -71,7 +71,7 @@ Through the following project we have created our own interpreter of commands Li
 
 ***
 ## Compilation
-> Your shell will be compiled this way:
+> Shell will be compiled this way:
 ***
 
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
