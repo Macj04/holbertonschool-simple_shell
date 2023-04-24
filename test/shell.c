@@ -42,17 +42,7 @@ int main(void)
 				break;
 		}
 
-		if (check_space(line_buf))
-		{
-			get_token(line_buf, array, "\t\n ");
-			if (verify_dir(array[0]))
-			{
-				if (verify_status(array[0]))
-					subprocess(array);
-			}
-			else
-			{
-				if (!verify_dir(array[0]))
+		if (!verify_dir(array[0]))
 				{
 					char *full_path = find_command(array[0]);
 					if (full_path != NULL)
@@ -65,9 +55,7 @@ int main(void)
 					{
 						printf("%s: Command not found\n", array[0]);
 					}
-				}
-		}
+					}
 	}
-	}
-return (0);
+	return (0);
 }
