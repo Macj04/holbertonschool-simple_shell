@@ -28,18 +28,20 @@ int main(void)
 			exit(EXIT_SUCCESS);
 		}
 		if (line_buf[0] == '\n')
-                    continue;
+			continue;
 
-                array[0] = strtok(line_buf, " \t\n");
-                if (!array[0])
-                    continue;
+		array[0] = strtok(line_buf, " \t\n");
 
-                for (m = 1; m < 1024; m++)
-                {
-                    array[m] = strtok(NULL, " \t\n");
-                    if (!array[m])
-                        break;
-                }
+		if (!array[0])
+			continue;
+
+		for (m = 1; m < 1024; m++)
+		{
+			array[m] = strtok(NULL, " \t\n");
+			if (!array[m])
+				break;
+		}
+
 		if (check_space(line_buf))
 		{
 			get_token(line_buf, array, "\t\n ");
@@ -58,8 +60,7 @@ int main(void)
 					free_array_dir(array_dir);
 				}
 				else
-				
-					printf("%s: Command not found\n", array[0]);	
+					printf("%s: Command not found\n", array[0]);
 			}
 		}
 	}

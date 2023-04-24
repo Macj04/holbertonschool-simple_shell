@@ -24,7 +24,7 @@ int verify_dir(char *str)
 {
 	int m;
 
-	for (m = 0; str[m]; m ++)
+	for (m = 0; str[m]; m++)
 	{
 		if (str[m] == '/')
 			return (1);
@@ -68,15 +68,16 @@ char *func_getenv(const char *name)
  */
 int aux_subprocess(char **argv, char *path)
 {
-        pid_t id;
-        int cond = 0;
+	pid_t id;
+	int cond = 0;
 
-        id = fork();
-        if (id == -1)
-                return (-1);
-        if (id == 0)
-                execve(path, argv, NULL);
-        else
-                wait(&cond);
-        return (0);
+		id = fork();
+		if (id == -1)
+			return (-1);
+		if (id == 0)
+			execve(path, argv, NULL);
+		else
+			wait(&cond);
+
+		return (0);
 }
