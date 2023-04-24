@@ -43,19 +43,36 @@ void get_token(char *line_buf, char **array, char *delimit)
  */
 char *verify_path(char *line_buf, char **array_path)
 {
-	int m;
+	int m = 0, l = 0;
 	char *vdir;
 	struct stat sta;
+	char *take = NULL;
+	char *rut = NULL;
+	char *whe = NULL;
 
-	strtok(strdup(getenv("PATH=")), ":=");
+	take = strdup(func_getenv("PATH="));
+	whe = take;
+	strtok(take, ":=");
 
-	printf("Entro");
+	if (rut)
+	{
+		for (l = 0; rut[l]; l++)
+		{
+			rut = strtok(NULL, ":=");
+			array_path[l] = strdup(rut);
+		}
+		array_path[l] = NULL;
+		free(whe);
+		take = NULL;
+	}
 	for (m = 0; array_path[m]; m++)
 	{
-		vdir =  malloc(strlen(line_buf) + strlen(array_path[m]) + 2);
+		vdir = malloc(strlen(line_buf) + strlen(array_path[m]) + 1000);
 		if (vdir == NULL)
 			return (NULL);
-		sprintf(vdir, "%s/%s", array_path[m], line_buf);
+		strcpy(vdir, array_path[m]);
+		strcat(vdir, "/");
+		strcat(vdir, line_buf);
 		if (stat(vdir, &sta) == 0)
 			return (vdir);
 		free(vdir);
@@ -63,22 +80,23 @@ char *verify_path(char *line_buf, char **array_path)
 	return (NULL);
 }
 
+
 /**
  * subprocess - function that creates another process
  * @argv: Line command content
  * @path: Path
  * Return: 0 or -1
  */
-int subprocess(char **argv, char *path)
+int subprocess(char **argv)
 {
 	pid_t id;
-	int cond;
+	int cond = 0;
 
 	id = fork();
 	if (id == -1)
 		return (-1);
 	if (id == 0)
-		execve(path, argv, NULL);
+		execve(argv[0], argv, NULL);
 	else
 		wait(&cond);
 	return (0);

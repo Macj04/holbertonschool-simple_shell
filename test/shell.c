@@ -8,40 +8,60 @@
 int main(void)
 {
 	char *line_buf = NULL, *path_com = NULL;
-	char *array[1020], *array_dir[1024];
+	char *array[1024], *array_dir[1024];
 	size_t s = 0;
-	ssize_t nchars;
+	ssize_t nchars = 0;
+	int m;
 
 	/* Infinite loop for shell prompt*/
 	while (1)
 	{
-		if (isatty(0)) /* Check if input is from interactive terminal*/
-			printf("#cisfun$");
+		if (isatty(STDIN_FILENO)) /* Check if input is from interactive terminal*/
+			printf("~# ");
 
 		nchars = getline(&line_buf, &s, stdin); /* Number of characteres typed*/
 
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
 		{
 			free(line_buf);
-			exit(0);
+			putchar('\n');
+			exit(EXIT_SUCCESS);
 		}
+		if (line_buf[0] == '\n')
+                    continue;
 
-		line_buf = malloc(sizeof(char) * nchars); /* Memory allocation */
+                array[0] = strtok(line_buf, " \t\n");
+                if (!array[0])
+                    continue;
 
-		if (check_space(line_buf)) /* Check if the string exist */
+                for (m = 1; m < 1024; m++)
+                {
+                    array[m] = strtok(NULL, " \t\n");
+                    if (!array[m])
+                        break;
+                }
+		if (check_space(line_buf))
 		{
-			/*divides the string into tokens using delimiters*/
 			get_token(line_buf, array, "\t\n ");
-			/*Return the executable rout*/
-			if (path_com == verify_path(array[0], array_dir))
+			if (verify_dir(array[0]))
 			{
-				subprocess(array, path_com); /*Execute the file*/
-				free(path_com);
-				free_array_dir(array_dir);
+				if (verify_status(array[0]))
+					subprocess(array);
 			}
 			else
-				/*If it doesn't exist print this*/
-				printf("command not found\n");
+			{
+				path_com = verify_path(array[0], array_dir);
+				if (path_com)
+				{
+					aux_subprocess(array, path_com);
+					free(path_com);
+					free_array_dir(array_dir);
+				}
+				else
+				
+					printf("%s: Command not found\n", array[0]);	
+			}
 		}
 	}
+	return (0);
 }
