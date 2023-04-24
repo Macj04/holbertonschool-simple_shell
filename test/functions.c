@@ -43,43 +43,22 @@ void get_token(char *line_buf, char **array, char *delimit)
  */
 char *verify_path(char *line_buf, char **array_path)
 {
-	int m = 0, l = 0;
-	char *vdir;
 	struct stat sta;
-	char *take = NULL;
-	char *rut = NULL;
-	char *whe = NULL;
+	char *path = NULL;
+	int m;
 
-	take = strdup(func_getenv("PATH="));
-	whe = take;
-	strtok(take, ":=");
-
-	if (rut)
+	for (m = 0; array_path[m] != NULL; m++)
 	{
-		for (l = 0; rut[l]; l++)
-		{
-			rut = strtok(NULL, ":=");
-			array_path[l] = strdup(rut);
-		}
-		array_path[l] = NULL;
-		free(whe);
-		take = NULL;
-	}
-	for (m = 0; array_path[m]; m++)
-	{
-		vdir = malloc(strlen(line_buf) + strlen(array_path[m]) + 1000);
-		if (vdir == NULL)
+		path = malloc(strlen(array_path[m]) + strlen(line_buf) + 2);
+		if (path == NULL)
 			return (NULL);
-		strcpy(vdir, array_path[m]);
-		strcat(vdir, "/");
-		strcat(vdir, line_buf);
-		if (stat(vdir, &sta) == 0)
-			return (vdir);
-		free(vdir);
+		sprintf(path, "%s/%s", array_path[m], line_buf);
+		if (stat(path, &sta) == 0)
+			return (path);
+		free(path);
 	}
 	return (NULL);
 }
-
 
 /**
  * subprocess - function that creates another process
