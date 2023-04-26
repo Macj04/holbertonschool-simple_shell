@@ -34,14 +34,6 @@ Coming soon...
 <br>
 </br>
 
-## Usage
-
-Our simple shell works very similar as the original.
-
-* To call the function use this: _printf("format string", arguments);
-
-The first argument is a string that contains format specifiers, which are replaced by the corresponding argument values. The function returns the number of characters printed (excluding the terminating null byte).
-
 <br>
 </br>
 
