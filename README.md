@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <h1> C - Simple Shell <h1>
+  <h1 align="center"> C - Simple Shell </h1>
 
   <h3 align="center">What is a shell?😖</h3>
 
