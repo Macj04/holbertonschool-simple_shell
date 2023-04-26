@@ -28,12 +28,12 @@ int main(void)
 			exit(EXIT_SUCCESS);
 		}
 		if (line_buf[0] == '\n')
-			continue;
+			continue; /*if no input, continue iterating*/
 
-		array[0] = strtok(line_buf, " \t\n");
+		array[0] = strtok(line_buf, " \t\n"); /*Obtain the first command argument*/
 
 		if (!array[0])
-			continue;
+			continue; /*If no arguments, continue iterating*/
 
 		for (m = 1; m < 1024; m++)
 		{
@@ -42,16 +42,16 @@ int main(void)
 				break;
 		}
 
-		if (!verify_dir(array[0]))
+		if (!verify_dir(array[0])) /*Verify if first argument is a directory*/
 				{
-					char *full_path = find_command(array[0]);
-					if (full_path != NULL)
+					char *full_path = find_command(array[0]); /*Find the full path*/
+					if (full_path != NULL) /*If command is found, execute it as subprocess*/
 					{
 						aux_subprocess(array, full_path);
 						free(full_path);
 						free_array_dir(array_dir);
 					}
-					else
+					else /*If not found, print error message*/
 					{
 						printf("%s: Command not found\n", array[0]);
 					}
