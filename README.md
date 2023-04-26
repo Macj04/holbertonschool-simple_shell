@@ -55,7 +55,6 @@ The first argument is a string that contains format specifiers, which are replac
 
 <div align="center">
 </div>
-
 <br>
 </br>
 
