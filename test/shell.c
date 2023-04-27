@@ -8,7 +8,8 @@
 int main(void)
 {
 	char *line_buf = NULL;
-	char *array[1024], *array_dir[1024];
+	char *array[1024];
+	char *array_dir[1024];
 	size_t s = 0;
 	ssize_t nchars = 0;
 	int m;
@@ -42,7 +43,11 @@ int main(void)
 				break;
 		}
 
-		if (!verify_dir(array[0])) /*Verify if first argument is a directory*/
+		if (check_space(line_buf))
+		{
+		
+		
+			if (!verify_dir(array[0])) /*Verify if first argument is a directory*/
 				{
 					char *full_path = find_command(array[0]); /*Find the full path*/
 					if (full_path != NULL) /*If command is found, execute it as subprocess*/
@@ -55,7 +60,14 @@ int main(void)
 					{
 						printf("%s: Command not found\n", array[0]);
 					}
-					}
+				}
+			else if (verify_dir(array[0]))
+			{
+				if (verify_status(array[0]))
+					subprocess(array);
+			}
+			
+		}
 	}
 	return (0);
 }

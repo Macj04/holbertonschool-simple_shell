@@ -22,7 +22,7 @@ int verify_status(char *filename)
  */
 int verify_dir(char *str)
 {
-	int m;
+	int m = 0;
 
 	for (m = 0; str[m]; m++)
 	{
