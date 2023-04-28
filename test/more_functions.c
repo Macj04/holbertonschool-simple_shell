@@ -91,12 +91,13 @@ int aux_subprocess(char **argv, char *path)
 char *find_command(char *command)
 {
 	char *path = getenv("PATH");
+	char *path_copy = strdup(path);
 	char *dir;
 	char *full_path;
 
 	struct stat sb;
 
-	dir = strtok(path, ":");
+	dir = strtok(path_copy, ":");
 
 	while (dir != NULL)
 	{
