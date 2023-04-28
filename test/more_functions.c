@@ -22,7 +22,7 @@ int verify_status(char *filename)
  */
 int verify_dir(char *str)
 {
-	int m;
+	int m = 0;
 
 	for (m = 0; str[m]; m++)
 	{
@@ -80,4 +80,38 @@ int aux_subprocess(char **argv, char *path)
 			wait(&cond);
 
 		return (0);
+}
+
+/**
+* find_command - function that create the full path
+* @command: Pointer to char.
+* Return: NULL
+*/
+
+char *find_command(char *command)
+{
+	char *path = getenv("PATH");
+	char *path_copy = strdup(path);
+	char *dir;
+	char *full_path;
+
+	struct stat sb;
+
+	dir = strtok(path_copy, ":");
+
+	while (dir != NULL)
+	{
+		if (dir != NULL)
+			full_path = malloc(strlen(dir) + strlen(command) + 2);
+
+		sprintf(full_path, "%s/%s", dir, command);
+
+		if (stat(full_path, &sb) == 0 && sb.st_mode & S_IXUSR)
+		{
+			return (full_path);
+		}
+		free(full_path);
+		dir = strtok(NULL, ":");
+		}
+		return (NULL);
 }
