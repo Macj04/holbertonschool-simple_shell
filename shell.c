@@ -25,9 +25,9 @@ int main(void)
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
 		{
 			free(line_buf);
-			putchar('\n');
 			exit(EXIT_SUCCESS);
 		}
+
 		if (line_buf[0] == '\n')
 			continue; /*if no input, continue iterating*/
 
@@ -45,8 +45,6 @@ int main(void)
 
 		if (check_space(line_buf))
 		{
-		
-		
 			if (!verify_dir(array[0])) /*Verify if first argument is a directory*/
 				{
 					char *full_path = find_command(array[0]); /*Find the full path*/
@@ -62,11 +60,10 @@ int main(void)
 					}
 				}
 			else if (verify_dir(array[0]))
-			{
-				if (verify_status(array[0]))
-					subprocess(array);
-			}
-			
+				{
+					if (verify_status(array[0]))
+						subprocess(array);
+				}
 		}
 	}
 	return (0);
