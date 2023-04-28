@@ -63,7 +63,6 @@ char *verify_path(char *line_buf, char **array_path)
 /**
  * subprocess - function that creates another process
  * @argv: Line command content
- * @path: Path
  * Return: 0 or -1
  */
 int subprocess(char **argv)

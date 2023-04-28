@@ -10,8 +10,8 @@ int verify_status(char *filename)
 
 	if (stat(filename, &filestat) == 0)
 		return (1);
-	else
-		printf("No such file or directory\n");
+
+	printf("No such file or directory\n");
 	return (0);
 }
 
