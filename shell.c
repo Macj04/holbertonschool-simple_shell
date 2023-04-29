@@ -11,6 +11,14 @@ main(void)
 	{
 		if (isatty(STDIN_FILENO)) /* Check if input is from interactive terminal*/
 			printf("~# ");
+
+		line_buf = malloc(s);
+
+		if (line_buf == NULL)
+		{
+			perror("Eror: malloc failed");
+			exit(EXIT_FAILURE);
+		}
 		nchars = getline(&line_buf, &s, stdin); /* Number of characteres typed*/
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
 		{
@@ -40,6 +48,7 @@ main(void)
 				{
 					aux_subprocess(array, full_path);
 					free(full_path);
+					full_path = NULL;
 				}
 				else /*If not found, print error message*/
 				{
@@ -51,7 +60,7 @@ main(void)
 				if (verify_status(array[0]))
 					subprocess(array);
 			}
-		}
+	}
 	}
 		return (0);
 }
