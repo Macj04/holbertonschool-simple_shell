@@ -20,7 +20,7 @@ main(void)
 		if (strcmp(line_buf, "exit\n") == 0)
 		{
 			free(line_buf);
-			exit(2);
+			exit(1);
 		}
 		array[0] = strtok(line_buf, " \t\n"); /*Obtain the first command argument*/
 		if (!array[0])
