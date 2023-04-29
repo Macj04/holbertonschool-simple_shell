@@ -15,12 +15,12 @@ main(void)
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
 		{
 			free(line_buf);
-			exit(EXIT_SUCCESS);
+			exit(0);
 		}
 		if (strcmp(line_buf, "exit\n") == 0)
 		{
 			free(line_buf);
-			exit(1);
+			exit(2);
 		}
 		array[0] = strtok(line_buf, " \t\n"); /*Obtain the first command argument*/
 		if (!array[0])
