@@ -79,19 +79,3 @@ int subprocess(char **argv)
 		wait(&cond);
 	return (0);
 }
-
-/**
- * free_array_dir - Fuction that free the array direction
- * @array_dir: Direction of array
- * Return: Always 0
- */
-void free_array_dir(char **array_dir)
-{
-	int m = 0;
-
-	if (array_dir)
-	{
-		for (m = 0; array_dir[m]; m++)
-			free(array_dir[m]);
-	}
-}

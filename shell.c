@@ -17,6 +17,11 @@ main(void)
 			free(line_buf);
 			exit(EXIT_SUCCESS);
 		}
+		if (strcmp(line_buf, "exit\n") == 0)
+		{
+			free(line_buf);
+			exit(EXIT_SUCCESS);
+		}
 		array[0] = strtok(line_buf, " \t\n"); /*Obtain the first command argument*/
 		if (!array[0])
 			continue; /*If no arguments, continue iterating*/
@@ -46,7 +51,7 @@ main(void)
 				if (verify_status(array[0]))
 					subprocess(array);
 			}
-		}
 	}
-	return (0);
+	}
+		return (0);
 }
