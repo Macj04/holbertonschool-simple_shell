@@ -70,6 +70,9 @@ int subprocess(char **argv)
 	pid_t id;
 	int cond = 0;
 
+	if (access(argv[0], X_OK) == -1)
+		return (-1);
+
 	id = fork();
 	if (id == -1)
 		return (-1);
