@@ -14,7 +14,6 @@ main(void)
 		nchars = getline(&line_buf, &s, stdin); /* Number of characteres typed*/
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
 		{
-			putchar(10);
 			free(line_buf);
 			exit(0);
 		}
@@ -52,7 +51,7 @@ main(void)
 				if (verify_status(array[0]))
 					subprocess(array);
 			}
-	}
+		}
 	}
 		return (0);
 }
