@@ -59,7 +59,7 @@
 | tar     | Creates and extracts compressed files. |
 | touch   | Creates an empty file or updates the access and modification date of an existing file. |
 | whoami  | Displays the name of the current user. |
-| exit    | Finish and exit |
+| exit    | Finish and exit. |
 
 </div>
 
