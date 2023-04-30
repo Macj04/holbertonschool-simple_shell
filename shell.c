@@ -26,11 +26,6 @@ main(void)
 			free(line_buf);
 			exit(0);
 		}
-		if (strcmp(line_buf, "exit\n") == 0)
-		{
-			free(line_buf);
-			exit(2);
-		}
 		array[0] = strtok(line_buf, " \t\n"); /*Obtain the first command argument*/
 		if (!array[0])
 			continue; /*If no arguments, continue iterating*/
@@ -42,6 +37,12 @@ main(void)
 		}
 		if (check_space(line_buf))
 		{
+			if (strcmp(array[0], "exit") == 0)
+			{
+				free(line_buf);
+				exit(0);
+			}
+
 			if (!verify_dir(array[0])) /*Verify if first argument is a directory*/
 			{
 				full_path = find_command(array[0]); /*Find the full path*/
