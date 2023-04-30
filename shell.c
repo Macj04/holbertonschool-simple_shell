@@ -12,6 +12,8 @@ main(void)
 		if (isatty(STDIN_FILENO)) /* Check if input is from interactive terminal*/
 			printf("~# ");
 
+		line_buf = malloc(s);
+
 		nchars = getline(&line_buf, &s, stdin); /* Number of characteres typed*/
 
 		if (line_buf == NULL)
