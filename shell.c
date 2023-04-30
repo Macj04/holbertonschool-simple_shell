@@ -12,14 +12,13 @@ main(void)
 		if (isatty(STDIN_FILENO)) /* Check if input is from interactive terminal*/
 			printf("~# ");
 
-		line_buf = malloc(s);
+		nchars = getline(&line_buf, &s, stdin); /* Number of characteres typed*/
 
 		if (line_buf == NULL)
 		{
 			perror("Eror: malloc failed");
 			exit(EXIT_FAILURE);
 		}
-		nchars = getline(&line_buf, &s, stdin); /* Number of characteres typed*/
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
 		{
 			free(line_buf);
@@ -52,7 +51,7 @@ main(void)
 				}
 				else /*If not found, print error message*/
 				{
-					printf("%s: Command not found\n", array[0]);
+					printf("%s: not found\n", array[0]);
 					free(full_path);
 				}
 			}
