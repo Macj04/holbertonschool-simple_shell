@@ -65,7 +65,7 @@ char *verify_path(char *line_buf, char **array_path)
  * @argv: Line command content
  * Return: 0 or -1
  */
-int subprocess(char **argv)
+int subprocess(char **argv, char **environ)
 {
 	pid_t id;
 	int cond = 0;
@@ -77,7 +77,7 @@ int subprocess(char **argv)
 	if (id == -1)
 		return (-1);
 	if (id == 0)
-		execve(argv[0], argv, NULL);
+		execve(argv[0], argv, environ);
 	else
 		wait(&cond);
 	return (0);
