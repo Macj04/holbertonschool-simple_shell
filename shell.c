@@ -46,7 +46,7 @@ main(void)
 				full_path = find_command(array[0]); /*Find the full path*/
 				if (full_path != NULL) /*If command is found, execute it as subprocess*/
 				{
-					aux_subprocess(array, full_path);
+					aux_subprocess(array, full_path, environ);
 					free(full_path);
 					full_path = NULL;
 				}
