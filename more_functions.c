@@ -93,7 +93,7 @@ char *find_command(char *command)
 	char *path = getenv("PATH");
 	char *path_copy = strdup(path);
 	char *dir;
-	char *full_path;
+	char *full_path = NULL;
 
 	struct stat sb;
 
@@ -101,17 +101,26 @@ char *find_command(char *command)
 
 	while (dir != NULL)
 	{
-		if (dir != NULL)
-			full_path = malloc(strlen(dir) + strlen(command) + 2);
+
+		full_path = malloc(strlen(dir) + strlen(command) + 2);
+
+		if (full_path == NULL)
+		{
+			free(path_copy);
+			perror("Memoriy alocation failed");
+			continue;
+		}
 
 		sprintf(full_path, "%s/%s", dir, command);
 
 		if (stat(full_path, &sb) == 0 && sb.st_mode & S_IXUSR)
 		{
+			free(path_copy);
 			return (full_path);
 		}
-		free(full_path);
 		dir = strtok(NULL, ":");
 		}
+		free(path_copy);
+		free(full_path);
 		return (NULL);
 }

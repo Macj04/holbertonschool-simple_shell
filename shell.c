@@ -3,7 +3,7 @@ int
 main(void)
 {
 	char *line_buf = NULL, *array[1000], *full_path = NULL;
-	size_t s = 0;
+	size_t s = 32;
 	ssize_t nchars = 0;
 	int m;
 
@@ -53,6 +53,7 @@ main(void)
 				else /*If not found, print error message*/
 				{
 					printf("%s: Command not found\n", array[0]);
+					free(full_path);
 				}
 			}
 			else if (verify_dir(array[0]))
@@ -61,6 +62,9 @@ main(void)
 					subprocess(array);
 			}
 	}
+		free(line_buf);
 	}
+		free(line_buf);
+		free(full_path);
 		return (0);
 }
