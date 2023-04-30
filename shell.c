@@ -18,7 +18,7 @@ main(void)
 
 		if (line_buf == NULL)
 		{
-			perror("Eror: malloc failed");
+			printf("Eror: malloc failed");
 			exit(EXIT_FAILURE);
 		}
 		if (nchars == -1) /* check if getline fail, EOF or user use CTRL + D */
@@ -54,8 +54,9 @@ main(void)
 				}
 				else /*If not found, print error message*/
 				{
-					printf("%s: not found\n", array[0]);
+					fprintf(stderr, "%s: not found\n", array[0]);
 					free(full_path);
+					full_path = NULL;
 				}
 			}
 			else if (verify_dir(array[0]))
@@ -63,8 +64,9 @@ main(void)
 				if (verify_status(array[0]))
 					subprocess(array, environ);
 			}
-	}
 		free(line_buf);
+		free(full_path);
+	}
 	}
 		free(line_buf);
 		free(full_path);

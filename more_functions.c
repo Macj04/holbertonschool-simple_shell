@@ -11,7 +11,7 @@ int verify_status(char *filename)
 	if (stat(filename, &filestat) == 0)
 		return (1);
 
-	printf("No such file or directory\n");
+	fprintf(stderr, "No such file or directory\n");
 	return (0);
 }
 
@@ -101,7 +101,7 @@ char *find_command(char *command)
 
 	while (dir != NULL)
 	{
-
+		free(full_path);
 		full_path = malloc(strlen(dir) + strlen(command) + 2);
 
 		if (full_path == NULL)
