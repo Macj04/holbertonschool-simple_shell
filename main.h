@@ -21,7 +21,7 @@ int verify_status(char *filename);
 int verify_dir(char *str);
 char *func_getenv(const char *name);
 extern char **environ;
-int aux_subprocess(char **argv, char *path, char **environ);
+int aux_subprocess(char **argv, char *path);
 char *find_command(char *command);
 
 #endif

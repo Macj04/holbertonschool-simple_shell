@@ -66,7 +66,7 @@ char *func_getenv(const char *name)
  * @path: Path
  * Return: 0 or -1
  */
-int aux_subprocess(char **argv, char *path, char **environ)
+int aux_subprocess(char **argv, char *path)
 {
 	pid_t id;
 	int cond = 0;
@@ -75,7 +75,7 @@ int aux_subprocess(char **argv, char *path, char **environ)
 		if (id == -1)
 			return (-1);
 		if (id == 0)
-			execve(path, argv, environ);
+			execve(path, argv, NULL);
 		else
 			wait(&cond);
 
