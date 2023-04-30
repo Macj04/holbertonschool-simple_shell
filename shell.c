@@ -55,8 +55,6 @@ main(void)
 				else /*If not found, print error message*/
 				{
 					fprintf(stderr, "%s: not found\n", array[0]);
-					free(full_path);
-					full_path = NULL;
 				}
 			}
 			else if (verify_dir(array[0]))
@@ -65,10 +63,13 @@ main(void)
 					subprocess(array, environ);
 			}
 		free(line_buf);
+		full_path = NULL;
+		}
+	}
+	if (full_path != NULL)
+	{
 		free(full_path);
 	}
-	}
-		free(line_buf);
-		free(full_path);
+
 		return (0);
 }

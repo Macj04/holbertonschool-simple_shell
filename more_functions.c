@@ -63,6 +63,7 @@ char *func_getenv(const char *name)
 /**
  * aux_subprocess - function that creates another process
  * @argv: Line command content
+ * @environ: Reference to enviroment
  * @path: Path
  * Return: 0 or -1
  */

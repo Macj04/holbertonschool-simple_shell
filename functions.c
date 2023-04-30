@@ -55,6 +55,7 @@ char *verify_path(char *line_buf, char **array_path)
 		sprintf(path, "%s/%s", array_path[m], line_buf);
 		if (stat(path, &sta) == 0)
 			return (path);
+
 		free(path);
 	}
 	return (NULL);
@@ -63,6 +64,7 @@ char *verify_path(char *line_buf, char **array_path)
 /**
  * subprocess - function that creates another process
  * @argv: Line command content
+ * @environ: reference to enviroment
  * Return: 0 or -1
  */
 int subprocess(char **argv, char **environ)
@@ -79,7 +81,7 @@ int subprocess(char **argv, char **environ)
 	if (id == 0)
 		execve(argv[0], argv, environ);
 	else
-		wait(&cond);	
-	
+		wait(&cond);
+
 	return (0);
 }
