@@ -66,6 +66,10 @@
 
 ## Usage
 
+```
+git clone https://github.com/Macj04/holbertonschool-simple_shell
+```
+
 * To start the program use this: ./hsh
 
 <br>
