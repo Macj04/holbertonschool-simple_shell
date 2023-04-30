@@ -6,7 +6,7 @@
     Our Simple Shell is a command line program that allows the user to execute commands. The shell is started by opening a terminal and displays a prompt where the user can enter commands. In addition to executing built-in commands, such as "cd" and "exit", it can also execute external commands by providing the full path to the executable file. It is written in C programming language and can be compiled and run on Linux operating systems.
     <br/>
     <br/>
-    <a href="(https://github.com/Macj04/holbertonschool-simple_shell)"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Macj04/holbertonschool-simple_shell"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
   </p>
@@ -89,4 +89,4 @@ bin    dev   git  lib   lib64  main.c  mnt    Personal_dir  root  sbin  sss  tes
 ## Authors
 
 * **Lautaro Rodriguez** - *Holberton Student* - [Lautaro Rodriguez](https://github.com/LautareteX) - *Software Developer.*
-* **Miguel Coa** - *Holberton Student* - [Miguel Coa]([https://github.com/JereDev19/](https://github.com/Macj04)) - *Software Developer.*
+* **Miguel Coa** - *Holberton Student* - [Miguel Coa](https://github.com/Macj04) - *Software Developer.*
