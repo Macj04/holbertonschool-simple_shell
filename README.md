@@ -27,8 +27,7 @@
 </br>
 
 ##  Flowchart
-
-https://i.ibb.co/f04YrvB/Flowchart-Holberton.png
+[View Flowchart](https://github.com/Macj04/holbertonschool-simple_shell/blob/master/flowchart/Flowchart%20Holberton.png?raw=true)
 
 <br>
 </br>
