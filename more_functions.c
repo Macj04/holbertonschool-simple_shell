@@ -101,17 +101,21 @@ char *find_command(char *command)
 
 	while (dir != NULL)
 	{
-		if (dir != NULL)
-			full_path = malloc(strlen(dir) + strlen(command) + 2);
+		if (full_path != NULL)
+			free(full_path);
+			
+		full_path = malloc(strlen(dir) + strlen(command) + 2);
 
 		sprintf(full_path, "%s/%s", dir, command);
 
 		if (stat(full_path, &sb) == 0 && sb.st_mode & S_IXUSR)
 		{
+			free(path_copy);
 			return (full_path);
 		}
-		free(full_path);
 		dir = strtok(NULL, ":");
-		}
-		return (NULL);
+	}
+	free(path_copy);
+	free(full_path);
+	return (NULL);
 }
