@@ -108,7 +108,7 @@ char *find_command(char *command)
 		if (full_path == NULL)
 		{
 			free(path_copy);
-			perror("Memoriy alocation failed");
+			perror("Memory allocation failed");
 			continue;
 		}
 
